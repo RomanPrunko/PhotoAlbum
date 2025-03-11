@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Головна{% endblock %}
+{% block content %}
+<div class="container mt-4">
+  <h1>Вітаємо у сервісі Фотоальбом!</h1>
+  <p>Тут ви можете створювати папки та зберігати фотографії.</p>
+  {% if user.is_authenticated %}
+    <p>Ви увійшли як <b>{{ user.username }}</b>. Перейти до 
+      <a href="{% url 'album_list' %}" class="btn btn-primary btn-sm">Вашого альбому</a>.
+    </p>
+    <a href="{% url 'logout' %}" class="btn btn-danger">Вийти</a>
+  {% else %}
+    <a href="{% url 'login' %}" class="btn btn-primary">Увійти</a>
+    <a href="{% url 'signup' %}" class="btn btn-success">Зареєструватися</a>
+  {% endif %}
+</div>
+{% endblock %}

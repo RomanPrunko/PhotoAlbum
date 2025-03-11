@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+  <h2>Видалити фото?</h2>
+  <img src="{{ photo.image.url }}" class="img-fluid mb-3" style="max-height:200px;">
+  <form method="POST">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Видалити</button>
+    {% if photo.folder %}
+      <a href="{% url 'album_detail' photo.folder.id %}" class="btn btn-secondary">Скасувати</a>
+    {% else %}
+      <a href="{% url 'album_list' %}" class="btn btn-secondary">Скасувати</a>
+    {% endif %}
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+  <h2>Видалити папку "{{ folder.name }}"?</h2>
+  <p>Ця дія також видалить усі вкладені підпапки та фото в них.</p>
+  <form method="POST">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Видалити</button>
+    <a href="{% if folder.parent %}{% url 'album_detail' folder.parent.id %}{% else %}{% url 'album_list' %}{% endif %}"
+       class="btn btn-secondary">Скасувати</a>
+  </form>
+</div>
+{% endblock %}

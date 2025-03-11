@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% block title %}Папка: {{ folder.name }}{% endblock %}
+{% block content %}
+<div class="container mt-4">
+  <h2>Папка: {{ folder.name }}</h2>
+  <div class="mb-3">
+    {% if folder.parent %}
+      <a href="{% url 'album_detail' folder.parent.id %}" class="btn btn-secondary">← Назад до батьківської папки</a>
+    {% else %}
+      <a href="{% url 'album_list' %}" class="btn btn-secondary">← Назад до альбому</a>
+    {% endif %}
+
+    <a href="{% url 'edit_folder' folder.id %}" class="btn btn-warning">Редагувати папку</a>
+    <a href="{% url 'delete_folder' folder.id %}" class="btn btn-danger">Видалити папку</a>
+  </div>
+
+  <div class="mb-3">
+    <a href="{% url 'create_subfolder' folder.id %}" class="btn btn-success">Створити вкладену папку</a>
+    <a href="{% url 'upload_photo_in_folder' folder.id %}" class="btn btn-primary">Завантажити фото</a>
+  </div>
+
+  <hr>
+
+  <h4>Вкладені папки:</h4>
+  <div class="row">
+    {% for sub in subfolders %}
+      <div class="col-md-3">
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5 class="card-title">{{ sub.name }}</h5>
+            <a href="{% url 'album_detail' sub.id %}" class="btn btn-sm btn-info">Переглянути</a>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <p class="text-muted">Немає вкладених папок</p>
+    {% endfor %}
+  </div>
+
+  <hr>
+
+  <h4>Фото в папці:</h4>
+  <div class="row">
+    {% for photo in photos %}
+      <div class="col-md-3">
+        <div class="card mb-3">
+          <img src="{{ photo.image.url }}" class="card-img-top img-fluid" alt="Фото">
+          <div class="card-body text-center">
+            <form action="{% url 'photo_delete_confirm' photo.id %}" method="POST" onsubmit="return confirm('Ви впевнені, що хочете видалити це фото?');">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-danger btn-sm">Видалити</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <!-- Пагінація -->
+  <nav>
+    <ul class="pagination">
+      {% if photos.has_previous %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ photos.previous_page_number }}">Попередня</a>
+        </li>
+      {% endif %}
+      {% for num in photos.paginator.page_range %}
+        <li class="page-item {% if photos.number == num %} active {% endif %}">
+          <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+        </li>
+      {% endfor %}
+      {% if photos.has_next %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ photos.next_page_number }}">Наступна</a>
+        </li>
+      {% endif %}
+    </ul>
+  </nav>
+
+</div>
+{% endblock %}

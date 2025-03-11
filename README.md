@@ -19,4 +19,9 @@
 ![image](https://github.com/user-attachments/assets/939c0efd-0701-4b1d-b0b2-71669679047d)
 ![image](https://github.com/user-attachments/assets/066929ed-ba6a-4050-b01f-298431140def)
 
+7. Завантаження фото у вкладену папку boxing1996
+![image](https://github.com/user-attachments/assets/3cb2304c-1786-46e6-b6d3-ce6f5bce3e39)
+![image](https://github.com/user-attachments/assets/05def4e9-d8f3-4907-a1da-6d182b06cbfe)
 
+8. Все завантажується на amazon s3
+![image](https://github.com/user-attachments/assets/eeaa1107-d655-4a9a-87c9-5b4508dd5564)

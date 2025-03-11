@@ -12,3 +12,11 @@
 4. Сторінка альбому
 ![image](https://github.com/user-attachments/assets/eec2dd2a-4a84-4bbe-983b-8a5e7bd69fd1)
 
+5. Завантаження фото в корінь
+![image](https://github.com/user-attachments/assets/a39418ed-d28c-4c65-ad40-03ba98d6c800)
+
+6. Завантаження фото в створену папку boxing
+![image](https://github.com/user-attachments/assets/939c0efd-0701-4b1d-b0b2-71669679047d)
+![image](https://github.com/user-attachments/assets/066929ed-ba6a-4050-b01f-298431140def)
+
+
